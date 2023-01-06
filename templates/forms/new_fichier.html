@@ -1,0 +1,24 @@
+{% extends 'layouts/main.html' %}
+{% block title %}New File Listing{% endblock %}
+{% block content %}
+  <div class="form-wrapper">
+    <form method="post" class="form">
+      <h3 class="form-heading">List a new File</h3>
+    <div class="form-group">
+        <label for="name">File description</label>
+        {{ form.name(class_ = 'form-control', placeholder='filename', autofocus = true) }}
+    </div>
+    <div class="form-group">
+        <label for="activity_id">Activity ID</label>
+        <small> can be found on the activity's Page</small>
+        {{ form.activity_id(class_ = 'form-control', autofocus = true) }}
+    </div>
+    <div class="form-group">
+      <label  for="file">Select a file </label>
+      {{ form.file(class_ = 'form-control', autofocus = true) }}
+      <!-- <input type="file" class="form-control" id="customFile" /> -->
+    </div>
+      <input type="submit" value="Upload" class="btn btn-primary btn-lg btn-block">
+    </form>
+  </div>
+{% endblock %}

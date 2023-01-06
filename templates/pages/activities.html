@@ -1,0 +1,17 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Archie | Activity{% endblock %}
+{% block content %}
+<h3> Activities </h3>
+	<ul class="items">
+        {% for activity in areas %} 
+            <li>
+                <a href="/service/{{activity.service.id}}/activity/{{activity.id}}/fichiers">
+                    <i class="fa fa-bolt"></i>
+                    <div class="item">
+                        <h5>{{activity.name }}, id : {{activity.id}} </h5>
+                    </div>
+                </a>
+            </li>
+		{% endfor %}
+	</ul>
+{% endblock %}
