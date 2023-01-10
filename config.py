@@ -16,8 +16,16 @@ DEBUG = True
 # Connect to the database
 
 # TODO IMPLEMENT DATABASE URL
-SQLALCHEMY_DATABASE_URI = 'postgresql://databaseweb:pass_admin@postgresql-databaseweb.alwaysdata.net:5432/databaseweb_fyyur_db'
+# SQLALCHEMY_DATABASE_URI = 'postgresql://databaseweb:pass_admin@postgresql-databaseweb.alwaysdata.net:5432/databaseweb_fyyur_db'
 # SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://yanord:yanord@localhost/cl_dbname'
+
+print(os.getenv("FLASK_ENV"))
+if "development" == os.getenv("FLASK_ENV"):
+    SQLALCHEMY_DATABASE_URI = 'postgresql://admin:pass_admin@localhost:5432/fyyur_db'
+else:
+    SQLALCHEMY_DATABASE_URI = 'postgresql://databaseweb:pass_admin@postgresql-databaseweb.alwaysdata.net:5432/databaseweb_fyyur_db'
+
+
 
 # SQLALCHEMY_ECHO = True
 

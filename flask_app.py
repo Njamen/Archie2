@@ -3,6 +3,7 @@
 # Imports
 #----------------------------------------------------------------------------#
 
+import os
 import json
 from sqlite3 import DatabaseError
 import dateutil.parser
@@ -826,8 +827,11 @@ if not app.debug:
 #----------------------------------------------------------------------------#
 
 # Default port:
-# if __name__ == '__main__':
-#     app.run()
+
+location = os.getenv("FLASK_ENV","development")
+if location == "development":
+    if __name__ == '__main__':
+        app.run()
 
 # Or specify port manually:
 '''

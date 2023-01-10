@@ -1,5 +1,5 @@
 ## Introduction
-Achie is file archiver 
+Achie2  is file archiver 
 
 create the database 
 1. **Install the dependencies:**
@@ -9,9 +9,7 @@ pip install -r requirements.txt
 
 2. **Run the development server:**
 ```
-export FLASK_APP=myapp
-export FLASK_ENV=development # enables debug mode
-python3 app.py
+FLASK_APP=myapp FLASK_ENV=development python3 flask_app.py
 ```
 
 3. **Verify on the Browser**<br>
