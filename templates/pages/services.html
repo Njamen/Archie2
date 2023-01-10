@@ -3,7 +3,7 @@
 {% block content %}
 <h3> Services </h3>
 {% for service in areas %}
-<h4>{{ service.name}}, id : {{service.id}}</h3>
+<h4>{{ service.name}}</h3>
 	<ul class="items">
 		{% for activity in service.activities %}
 		<li>

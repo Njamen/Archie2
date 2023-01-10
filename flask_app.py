@@ -115,7 +115,13 @@ def index():
 
 @app.route('/fichier/create', methods=['GET'])
 def create_fichier_form():
-    form = FichierForm()
+    
+    all_activity =  [(
+        activity.id  , activity.name       
+    ) for activity in  Activite.query.all()] 
+
+    form = FichierForm(all_activity)
+
     return render_template('forms/new_fichier.html', form=form)
 
 
@@ -128,7 +134,7 @@ def create_fichier_submission():
     try:
         show = Fichier(
             name=form.file.data,
-            acivite_id=form.activity_id.data,
+            acivite_id=form.act.data,
             url=""
             # url=form.url.data,
         )
@@ -152,7 +158,12 @@ def create_fichier_submission():
 
 @app.route('/activity/create', methods=['GET'])
 def create_activity_form():
-    form = ActivityForm()
+
+    all_service = [(
+        service.id  , service.name       
+    ) for service in  Service.query.all()]
+
+    form = ActivityForm(all_service)
     return render_template('forms/new_activity.html', form=form)
 
 @app.route('/activity/create', methods=['POST'])
@@ -162,10 +173,10 @@ def create_activity_submission():
     form = ActivityForm(request.form)
     try:
 
-        print("name {form.name.data}")
+        print(form.serv.data)
         activite = Activite(
             name=form.name.data,
-            service_id= form.service_id.data,
+            service_id= form.serv.data,
         )
 
         db.session.add(activite)
@@ -321,7 +332,6 @@ def services():
                 "name": activity.name,
             } for activity  in service.activities ]
         })
-    print(data)
 
     return render_template('pages/services.html', areas=data)
 

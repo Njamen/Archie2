@@ -8,16 +8,20 @@
         <label for="name">File description</label>
         {{ form.name(class_ = 'form-control', placeholder='filename', autofocus = true) }}
     </div>
+    
     <div class="form-group">
-        <label for="activity_id">Activity ID</label>
-        <small> can be found on the activity's Page</small>
-        {{ form.activity_id(class_ = 'form-control', autofocus = true) }}
-    </div>
+      <label for="name"> Activity </label>
+      {{ form.act(class_ = 'form-control', autofocus = true) }}
+    </div>  
+
     <div class="form-group">
       <label  for="file">Select a file </label>
       {{ form.file(class_ = 'form-control', autofocus = true) }}
       <!-- <input type="file" class="form-control" id="customFile" /> -->
     </div>
+
+
+
       <input type="submit" value="Upload" class="btn btn-primary btn-lg btn-block">
     </form>
   </div>

@@ -147,12 +147,27 @@ class ArtistForm(Form):
 #     )
 
 class ActivityForm(Form):
+
+    serv  = SelectField(
+        'service', validators=[DataRequired()]
+    )    
+
+    def __init__(self, services):
+        Form.__init__(self) 
+        self.serv.choices = services
+    
     service_id = StringField(
         'service_id',  validators=[DataRequired()]
     )
+
     name = StringField(
         'name', validators=[DataRequired()]
     )
+            
+
+
+
+
 
 
 class ServiceForm(Form):
@@ -162,6 +177,15 @@ class ServiceForm(Form):
 
 
 class FichierForm(Form):
+
+    act  = SelectField(
+        'Activity', validators=[DataRequired()]
+    )    
+
+    def __init__(self, activities):
+        Form.__init__(self) 
+        self.act.choices = activities
+
     name = StringField(
         'name', validators=[DataRequired()]
     )
