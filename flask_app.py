@@ -30,7 +30,8 @@ from datetime import (
     datetime,
     timezone
 )
-from models import db, Venue, Artist, Show
+# from models import db, Venue, Artist, Show
+from config import db;
 
 #----------------------------------------------------------------------------#
 # App Config.

@@ -14,7 +14,7 @@ from datetime import datetime
 class Service(db.Model):
     __tablename__ = 'Service' 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
+    name = db.Column(db.String(120))
     activities = db.relationship("Activite", back_populates="service", cascade="all, delete-orphan")
     # activities = db.relationship('Activite', backref='service')    
     # activities = db.relationship("Activite", back_populates="service", lazy='joined', casc    ade="all, delete")
@@ -25,7 +25,7 @@ class Service(db.Model):
 class Activite(db.Model):
     __tablename__ = 'Activite' 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
+    name = db.Column(db.String(120))
     service_id = db.Column(db.Integer, db.ForeignKey("Service.id"), nullable=False)
     service = db.relationship("Service", back_populates="activities")
     fichiers = db.relationship("Fichier", back_populates="activite", cascade="all, delete-orphan")
@@ -38,8 +38,8 @@ class Activite(db.Model):
 class Fichier(db.Model):
     __tablename__ = 'Fichier' 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    url = db.Column(db.String,  nullable=True) 
+    name = db.Column(db.String(120))
+    url = db.Column(db.String(120),  nullable=True) 
     acivite_id = db.Column(db.Integer, db.ForeignKey("Activite.id"), nullable=False)
     activite = db.relationship("Activite", back_populates="fichiers")
 
@@ -66,8 +66,8 @@ class Show(db.Model):
 class Venue(db.Model):
     __tablename__ = 'Venue' 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    genres = db.Column(db.ARRAY(db.String), nullable=False) 
+    name = db.Column(db.String(120))
+    genres = db.Column(db.String(120), nullable=False) 
     city = db.Column(db.String(120))
     state = db.Column(db.String(120))
     address = db.Column(db.String(120))
@@ -92,11 +92,11 @@ class Artist(db.Model):
     __tablename__ = 'Artist'
 
     id = db.Column(db.Integer, primary_key=True)    
-    name = db.Column(db.String) 
+    name = db.Column(db.String(120)) 
     city = db.Column(db.String(120))
     state = db.Column(db.String(120))
     phone = db.Column(db.String(120))
-    genres = db.Column(db.ARRAY(db.String), nullable=False)
+    genres = db.Column(db.String(120), nullable=False)
     image_link = db.Column(db.String(500))
     facebook_link = db.Column(db.String(120))
     seeking_venue = db.Column( db.Boolean(), default=False, nullable=False ) 
